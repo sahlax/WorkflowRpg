@@ -1,0 +1,216 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="BWHazel.Experiments.WorkflowRpg.Game" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowRpg.Workflow1_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:local="clr-namespace:BWHazel.Experiments.WorkflowRpg"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WorkflowRpg</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Player" Name="userName" />
+      <Variable x:TypeArguments="x:String" Default="Forest" Name="path" />
+    </Sequence.Variables>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="You are entering the world.  Who are you?" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">userName</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine()</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String">"Welcome " + userName + "!"</mca:CSharpValue>
+      </InArgument>
+    </WriteLine>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="You come to a branch in the road.  Do you choose the Forest or the Mountains?" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">path</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine()</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <If sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean">path == "Forest"</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="ForestSequence" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Boolean" Default="False" Name="chocolates" />
+          </Sequence.Variables>
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="You have entered the dark forest.  You find a box of chocolates.  Do you pick it up?" />
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean">chocolates</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpValue x:TypeArguments="x:Boolean">YesNoConverter.ToBoolean(Console.ReadLine())</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <If sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Condition>
+              <InArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpValue x:TypeArguments="x:Boolean">chocolates</mca:CSharpValue>
+              </InArgument>
+            </If.Condition>
+            <If.Then>
+              <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="You have some food!" />
+            </If.Then>
+            <If.Else>
+              <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="You have space for possibly better items." />
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="MountainsSequence" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="tool">
+              <Variable.Default>
+                <mca:CSharpValue x:TypeArguments="x:String">string.Empty</mca:CSharpValue>
+              </Variable.Default>
+            </Variable>
+          </Sequence.Variables>
+          <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="You have climbed into the mountains and find three tools: knife, rope and can opener.  Pick one." />
+          <While sap2010:WorkflowViewState.IdRef="While_1">
+            <While.Condition>
+              <mca:CSharpValue x:TypeArguments="x:Boolean">tool == string.Empty</mca:CSharpValue>
+            </While.Condition>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">
+                    <mca:CSharpReference x:TypeArguments="x:String">tool</mca:CSharpReference>
+                  </OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">Console.ReadLine()</mca:CSharpValue>
+                  </InArgument>
+                </Assign.Value>
+              </Assign>
+              <Switch x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                <Switch.Expression>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">tool</mca:CSharpValue>
+                  </InArgument>
+                </Switch.Expression>
+                <WriteLine x:Key="Knife" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="You can now cut new paths through difficult terrain." />
+                <WriteLine x:Key="Rope" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="You can now climb up or down large cliffs." />
+                <WriteLine x:Key="Can Opener" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="You can now open that can of tuna." />
+              </Switch>
+            </Sequence>
+          </While>
+        </Sequence>
+      </If.Else>
+    </If>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_6">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String">"Thank you for playing, " + userName + "!"</mca:CSharpValue>
+      </InArgument>
+    </WriteLine>
+    <local:FeedbackActivity sap2010:WorkflowViewState.IdRef="FeedbackActivity_1" />
+    <sads:DebugSymbol.Symbol>d2VDOlxVc2Vyc1xCZW5lZGljdFxEb2N1bWVudHNcVmlzdWFsIFN0dWRpbyAyMDEzXFByb2plY3RzXEV4cGVyaW1lbnRzXFdvcmtmbG93UnBnXFdvcmtmbG93UnBnXEdhbWUueGFtbDMmA6IBDgIBASg0KDwCAQMpNCk8AgECKwUrcQIBWCwFNw4CAVE4BTwRAgFNPQU9lQECAUs+BUkOAgFESgWaAQoCAQmbAQWfARECAQWgAQWgAVQCAQQrQytuAgFZNAs0WwIBVS8LL1kCAVI6CTpiAgFOPUM9kgECAUxGC0ZbAgFIQQtBVQIBRU0LTVoCAQpRCW8UAgEucgmYARQCAQ2dAQmdAXECAQZTO1NCAgEvVQtVogECAUJWC2EUAgE5YgtuEAIBMHYRdlsCAQ56C3quAQIBLHsLlwETAgESVUlVnwECAUNeEV58AgE+WRFZYgIBOmURZVoCATFpD2llAgE3bA9sewIBNXpJeqsBAgEtfw2WARgCARd9D31iAgETaU1pYgIBOGxNbHgCATaAAQ+LARgCASOMAQ+VARgCARiIARWIAWUCASiDARWDAV8CASSPARWPAVcCARmSARGSAZcBAgEhkwERkwGMAQIBH5QBEZQBigECAR2SAV6SAZQBAgEikwFdkwGJAQIBIJQBY5QBhwECAR4=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="1057,62" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="1057,62" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="1057,62" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="1057,62" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="1057,62" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="WriteLine_7" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="WriteLine_8" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="486,540">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_9" sap:VirtualizedContainerService.HintSize="524,62" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="476,62" />
+      <sap2010:ViewStateData Id="WriteLine_10" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="WriteLine_11" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="WriteLine_12" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="Switch`1_1" sap:VirtualizedContainerService.HintSize="476,181" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="498,407">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="524,567" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="546,793">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="1057,943" />
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="1057,62" />
+      <sap2010:ViewStateData Id="FeedbackActivity_1" sap:VirtualizedContainerService.HintSize="1057,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="1079,1741">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkflowRpg.Workflow1_1" sap:VirtualizedContainerService.HintSize="1119,1821" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
